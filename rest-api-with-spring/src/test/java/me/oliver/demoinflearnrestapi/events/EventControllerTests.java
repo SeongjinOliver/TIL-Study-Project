@@ -1,8 +1,12 @@
 package me.oliver.demoinflearnrestapi.events;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.time.LocalDateTime;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +31,35 @@ public class EventControllerTests {
   @Autowired
   MockMvc mockMvc;
 
+  /**
+   * Mapping Jackson Json이 의존성으로 들어가 있으면
+   * 스프링 부트를 사용하면 ObjectMapper가 임의의 빈으로 등록이 되어있음.
+   */
+  @Autowired
+  ObjectMapper objectMapper;
+
   @Test
   public void creatEvent() throws Exception {
+    Event event = Event.builder()
+        .name("Spring")
+        .description("REST API Development with Spring")
+        .beginEnrollmentDateTime(LocalDateTime.of(2020, 10, 28, 11, 57))
+        .closeEnrollmentDateTime(LocalDateTime.of(2020, 10, 29, 11, 57))
+        .beginEventDateTime(LocalDateTime.of(2020, 10, 30, 11, 57))
+        .endEventDateTime(LocalDateTime.of(2020, 10, 31, 11, 57))
+        .basePrice(100)
+        .maxPrice(200)
+        .limitOfEnrollment(100)
+        .location("강남역 D2 스타텁 팩토리")
+        .build();
+
     mockMvc.perform(post("/api/events/")
-    .contentType(MediaType.APPLICATION_JSON)
-    .accept(MediaTypes.HAL_JSON)
-    )
-        .andExpect(status().isCreated());
+          .contentType(MediaType.APPLICATION_JSON)
+          .accept(MediaTypes.HAL_JSON)
+          .content(objectMapper.writeValueAsString(event))) // Jackson Json으로 변경하여 요청 본문에 넣어
+        .andDo(print())
+        .andExpect(status().isCreated())
+        .andExpect(jsonPath("id").exists())
+        ;
   }
 }
