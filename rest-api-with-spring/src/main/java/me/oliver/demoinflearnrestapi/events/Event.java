@@ -1,9 +1,15 @@
 package me.oliver.demoinflearnrestapi.events;
 
 import java.time.LocalDateTime;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
+import lombok.Generated;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +22,9 @@ import lombok.Setter;
  * entity와의 연관관계를 만들면 좋지 않음 -> 서로간의 매서드를 호출하다가 stackOverFlow가 발생할 수 있음
  *
  * lombok 에노테이션은 메타 에노테이션으로 사용할 수 없음
+ *
+ * @{literal @Enumerated(EnumType.STRING)}
+ * 기본값은 EnumType,ORDINAL은 숫자 0, 1, 2, 3 순서로 저장이 됨. 나중에라도 ENUM의 순서가 바뀌면 데이터가 꼬이기 때문에 STRING으로 하는게 좋다고 생각 됨.
  */
 @Builder
 @AllArgsConstructor
@@ -23,8 +32,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
+@Entity
 public class Event {
 
+  @Id @GeneratedValue
   private int id;
   private String name;
   private String description;
@@ -38,5 +49,6 @@ public class Event {
   private int limitOfEnrollment;
   private boolean offline;
   private boolean free;
+  @Enumerated(EnumType.STRING)
   private EventStatus eventStatus;
 }
