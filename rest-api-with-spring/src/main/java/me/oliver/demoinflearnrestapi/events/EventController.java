@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * HATEOS가 제공하는 linkTo(), methodOn() 사용
+ */
 @Controller
 @RequestMapping(value = "/api/events", produces = MediaTypes.HAL_JSON_VALUE) // HAL JSON 컨텐츠 타입으로 응답을 보냄
 public class EventController {
