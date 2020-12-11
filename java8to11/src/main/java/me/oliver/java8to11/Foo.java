@@ -50,7 +50,7 @@ public class Foo {
 
     // 어떠한 인자값을 하나 받아서 true, false를 받음
     Predicate<String> startsWithKeesun = (s) -> s.startsWith("keesun");
-    // 작수인지 확인하는 함수를 만듦.
+    // 짝수인지 확인하는 함수를 만듦.
     Predicate<Integer> isEven = (i) -> i%2 == 0;
 
     // 아래와 같이 2개의 인자가 같을 때는 UaryOperator를 사용할 수 있음
@@ -59,5 +59,14 @@ public class Foo {
     System.out.println(multiply2AndPlus10.apply(2));
 
     System.out.println(plus10.andThen(multiply2).apply(2));
+
+    final int baseNumber = 10;
+
+    Consumer<Integer> integerConsumer = new Consumer<Integer>() {
+      @Override
+      public void accept(Integer integer) {
+        System.out.println(baseNumber);
+      }
+    };
   }
 }
