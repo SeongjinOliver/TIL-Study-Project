@@ -3,7 +3,10 @@ package StreamSample;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.IntSupplier;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class StreamTest {
 
@@ -77,6 +80,22 @@ public class StreamTest {
         .map(t -> t.getValue())
         .reduce(Integer::min)
         .stream().collect(Collectors.toList()).forEach(System.out::println);
+
+    System.out.println("----------------------");
+    // 피보나치
+    IntSupplier fib = new IntSupplier() {
+      private int previous = 0;
+      private int current = 1;
+      @Override
+      public int getAsInt() {
+        int oldPrevious = this.previous;
+        int nextValue = this.previous + this.current;
+        this.previous = this.current;
+        this.current = nextValue;
+        return oldPrevious;
+      }
+    };
+    IntStream.generate(fib).limit(10).forEach(System.out::println);
   }
 }
 
