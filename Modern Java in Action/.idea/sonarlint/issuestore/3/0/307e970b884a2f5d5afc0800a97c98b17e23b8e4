@@ -1,0 +1,32 @@
+
+S	java:S106'"9Replace this use of System.out or System.err by a logger.(¹¦…‡úÿÿÿÿ
+E
+java:S1481:"*Remove this unused "milan" local variable.(‘‘Æ£þÿÿÿÿ
+r
+java:S1192""WDefine a constant instead of duplicating this literal "----------------------" 8 times.(ŽåÕ¹ÿÿÿÿÿ
+U	java:S106b"9Replace this use of System.out or System.err by a logger.(ö¢ŠÉ8‡Å‘ìŽ/
+S	java:S106D"9Replace this use of System.out or System.err by a logger.(¹¦…‡úÿÿÿÿ
+S	java:S106/"9Replace this use of System.out or System.err by a logger.(¹¦…‡úÿÿÿÿ
+S	java:S106M"9Replace this use of System.out or System.err by a logger.(ŽåÕ¹ÿÿÿÿÿ
+S	java:S1068"9Replace this use of System.out or System.err by a logger.(ŽåÕ¹ÿÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(õ’í¾
+S	java:S106K"9Replace this use of System.out or System.err by a logger.(¼Ì£¶ûÿÿÿÿ
+B
+java:S1612I",Replace this lambda with a method reference.(¥­¬Ó
+`
+java:S1192"JDefine a constant instead of duplicating this literal "Cambridge" 5 times.(ý…ÿ‡
+S	java:S106""9Replace this use of System.out or System.err by a logger.(ŽåÕ¹ÿÿÿÿÿ
+Q
+java:S1128	"4Remove this unused import 'java.util.stream.Stream'.(ó÷Ž”8‡Å‘ìŽ/
+S	java:S106)"9Replace this use of System.out or System.err by a logger.(ŽåÕ¹ÿÿÿÿÿ
+S	java:S1066"9Replace this use of System.out or System.err by a logger.(¹¦…‡úÿÿÿÿ
+S	java:S106?"9Replace this use of System.out or System.err by a logger.(ŽåÕ¹ÿÿÿÿÿ
+Z	java:S106T"9Replace this use of System.out or System.err by a logger.(ŽåÕ¹ÿÿÿÿÿ8ôÜØéŽ/
+S	java:S106R"9Replace this use of System.out or System.err by a logger.(¼Ì£¶ûÿÿÿÿ
+T
+java:S1854:"9Remove this useless assignment to local variable "milan".(‘‘Æ£þÿÿÿÿ
+S	java:S106 "9Replace this use of System.out or System.err by a logger.(¹¦…‡úÿÿÿÿ
+A
+java:S1612P",Replace this lambda with a method reference.(§°¢9
+S	java:S1061"9Replace this use of System.out or System.err by a logger.(ŽåÕ¹ÿÿÿÿÿ
+S	java:S106F"9Replace this use of System.out or System.err by a logger.(ŽåÕ¹ÿÿÿÿÿ

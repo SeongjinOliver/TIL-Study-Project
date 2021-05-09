@@ -1,0 +1,22 @@
+
+m
+java:S1104"PMake name a static final constant or non-public and provide accessors if needed.( şÍ¾8çÆ„¶‘/
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ï¾¹ûûÿÿÿÿ
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(òÛşÿÿÿÿ8ÃÊÖ´‘/
+v
+java:S1104
+"TMake toppings a static final constant or non-public and provide accessors if needed.(Ğ½Âøÿÿÿÿ8€”…¶‘/
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(ü†¬Æúÿÿÿÿ8ÃÊÖ´‘/
+U	java:S106"9Replace this use of System.out or System.err by a logger.(åÁµ‘8ÃÊÖ´‘/
+U	java:S106"9Replace this use of System.out or System.err by a logger.(€ïç8ÃÊÖ´‘/
+U	java:S106"9Replace this use of System.out or System.err by a logger.(û·Şõ8ÃÊÖ´‘/
+s
+java:S1104	"QMake sauce a static final constant or non-public and provide accessors if needed.(ÓŸ±«ùÿÿÿÿ8€”…¶‘/
+U	java:S106"9Replace this use of System.out or System.err by a logger.(Ö³àÉ8ÃÊÖ´‘/
+•
+java:S1319
+"sThe type of the "toppings" object should be an interface such as "List" rather than the implementation "ArrayList".(Ğ½Âøÿÿÿÿ8€”…¶‘/
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(­«Õùúÿÿÿÿ8ÃÊÖ´‘/
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(Éä±Äıÿÿÿÿ8ÃÊÖ´‘/
+n
+java:S1104"QMake dough a static final constant or non-public and provide accessors if needed.(Ó·ƒõ8€”…¶‘/
