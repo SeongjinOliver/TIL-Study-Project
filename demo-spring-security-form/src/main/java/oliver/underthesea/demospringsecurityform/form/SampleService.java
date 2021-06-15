@@ -21,6 +21,7 @@ public class SampleService {
 //    Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 //    Object credentials = authentication.getCredentials();
 //    boolean authenticated = authentication.isAuthenticated();
+    // Thread Local Class 사용해서  account 정보 가져옴
     Account account = AccountContext.getAccount();
     System.out.println("===================");
     System.out.println(account.getUsername());
