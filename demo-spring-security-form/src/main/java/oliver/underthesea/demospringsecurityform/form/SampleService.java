@@ -6,6 +6,7 @@ import oliver.underthesea.demospringsecurityform.account.AccountContext;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,9 +22,15 @@ public class SampleService {
 //    Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 //    Object credentials = authentication.getCredentials();
 //    boolean authenticated = authentication.isAuthenticated();
+
     // Thread Local Class 사용해서  account 정보 가져옴
-    Account account = AccountContext.getAccount();
+//    Account account = AccountContext.getAccount();
+//    System.out.println("===================");
+//    System.out.println(account.getUsername());
+
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    UserDetails userDetails = (UserDetails) authentication.getPrincipal();
     System.out.println("===================");
-    System.out.println(account.getUsername());
+    System.out.println(userDetails.getUsername());
   }
 }

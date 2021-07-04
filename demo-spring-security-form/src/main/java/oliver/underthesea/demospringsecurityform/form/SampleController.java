@@ -37,7 +37,8 @@ public class SampleController {
   @GetMapping("/dashboard")
   public String dashboard(Model model, Principal principal) {
     model.addAttribute("message", "Hello " + principal.getName());
-    AccountContext.setAccount(accountRepository.findByUsername(principal.getName()));
+    // ThreadLocal 사용 예제
+//    AccountContext.setAccount(accountRepository.findByUsername(principal.getName()));
     sampleService.dashboard();
     return "index";
   }
