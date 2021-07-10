@@ -26,16 +26,20 @@ public class JpaMain {
     tx.begin();
 
     try {
-//      Member findMember = em.find(Member.class, 1L);
-      List<Member> result = em.createQuery("select m from Member as m", Member.class)
-          .setFirstResult(5)
-          .setMaxResults(8)
-          .getResultList();
+      // 비영속
+      Member member = new Member();
+      member.setId(100L);
+      member.setName("HelloJPA");
 
-      for (Member member : result) {
-        System.out.println("member.name = " + member.getName());
-      }
+      System.out.println("=== BEFORE ===");
+      /*
+       * 사실 이 때 DB에 저장되지 않는다.
+       * 영속
+       */
+      em.persist(member);
+      System.out.println("=== AFTER ===");
 
+      // 트랜잭션 커밋을 할 때 영속성 컨텍스트에 있는 객체가 DB에 쿼리가 날라가게 된다.
       tx.commit();
     } catch (Exception e) {
      tx.rollback();
