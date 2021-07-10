@@ -37,6 +37,7 @@ public class JpaMain {
        * 영속
        */
       em.persist(member);
+      em.detach(member);
       System.out.println("=== AFTER ===");
 
       // 트랜잭션 커밋을 할 때 영속성 컨텍스트에 있는 객체가 DB에 쿼리가 날라가게 된다.
