@@ -1,6 +1,5 @@
 package hellojpa;
 
-import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -26,20 +25,13 @@ public class JpaMain {
     tx.begin();
 
     try {
-      //비영속
-      Member member = new Member();
-      member.setId(101L);
-      member.setName("HelloJPA");
-
       //영속
-      System.out.println("=== BEFORE ===");
+      Member member = new Member(200L, "member200");
       em.persist(member);
-      System.out.println("=== AFTER ===");
 
-      Member findMember = em.find(Member.class, 101L);
-      System.out.println("findMember.id = " + findMember.getId());
-      System.out.println("findMember.name = " + findMember.getName());
+      em.flush();
 
+      System.out.println("=================");
       // 트랜잭션 커밋을 할 때 영속성 컨텍스트에 있는 객체가 DB에 쿼리가 날라가게 된다.
       tx.commit();
     } catch (Exception e) {
