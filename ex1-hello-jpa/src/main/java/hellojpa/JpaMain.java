@@ -26,12 +26,24 @@ public class JpaMain {
 
     try {
       Member member = new Member();
-      member.setUsername("C");
+      member.setUsername("A");
 
-      System.out.println("================");
+      Member member2 = new Member();
+      member2.setUsername("B");
+
+      Member member3 = new Member();
+      member3.setUsername("C");
+
+      System.out.println("==============================");
       em.persist(member);
-      System.out.println("member.id = " + member.getId());
-      System.out.println("================");
+      em.persist(member2);
+      em.persist(member3);
+
+      System.out.println("member1 = " + member.getId()); //1, 51
+      System.out.println("member2 = " + member2.getId());//Memory에서 호출
+      System.out.println("member3 = " + member3.getId());//Memory 호출
+
+      System.out.println("==============================");
 
       // 트랜잭션 커밋을 할 때 영속성 컨텍스트에 있는 객체가 DB에 쿼리가 날라가게 된다.
       tx.commit();

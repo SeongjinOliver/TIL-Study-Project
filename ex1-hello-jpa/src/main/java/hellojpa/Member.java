@@ -11,7 +11,7 @@ import javax.persistence.SequenceGenerator;
 @SequenceGenerator(
     name = "MEMBER_SEQ_GENERATOR",
     sequenceName = "MEMBER_SEQ",
-    initialValue = 1, allocationSize = 1)
+    initialValue = 1, allocationSize = 50)
 public class Member {
 
   @Id
