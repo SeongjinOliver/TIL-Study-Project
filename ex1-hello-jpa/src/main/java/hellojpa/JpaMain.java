@@ -25,15 +25,11 @@ public class JpaMain {
     tx.begin();
 
     try {
-      //영속
-      Member member = em.find(Member.class, 150L);
-      member.setName("BBBBB");
+      Member member = new Member();
+      member.setUsername("C");
 
-      em.clear();
+      em.persist(member);
 
-      Member member2 = em.find(Member.class, 150L);
-
-      System.out.println("=================");
       // 트랜잭션 커밋을 할 때 영속성 컨텍스트에 있는 객체가 DB에 쿼리가 날라가게 된다.
       tx.commit();
     } catch (Exception e) {
