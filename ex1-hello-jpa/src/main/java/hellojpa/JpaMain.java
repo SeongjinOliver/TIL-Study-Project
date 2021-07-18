@@ -28,7 +28,10 @@ public class JpaMain {
       Member member = new Member();
       member.setUsername("C");
 
+      System.out.println("================");
       em.persist(member);
+      System.out.println("member.id = " + member.getId());
+      System.out.println("================");
 
       // 트랜잭션 커밋을 할 때 영속성 컨텍스트에 있는 객체가 DB에 쿼리가 날라가게 된다.
       tx.commit();
