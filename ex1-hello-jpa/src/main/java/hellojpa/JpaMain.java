@@ -33,14 +33,18 @@ public class JpaMain {
 
       Member member = new Member();
       member.setUsername("member1");
-      member.setTeamId(team.getTeamId());
+      // JPA가 알아서 PK값을 꺼내서 FK로 매핑을 한다.
+      member.setTeam(team);
       em.persist(member);
+
+      em.flush();
+      em.clear();
 
       //조회
       Member findMember = em.find(Member.class, member.getId());
       //연관관계가 없음
-      Long findTeamId = findMember.getTeamId();
-      Team findTeam = em.find(Team.class, findTeamId);
+      Team findTeam = findMember.getTeam();
+      System.out.println("findTeam = " + findTeam.getTeamId());
 
       // 트랜잭션 커밋을 할 때 영속성 컨텍스트에 있는 객체가 DB에 쿼리가 날라가게 된다.
       tx.commit();
