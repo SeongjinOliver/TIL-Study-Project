@@ -1,4 +1,6 @@
-package jpql;
+package jpql.main;
+
+import jpql.Member;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
