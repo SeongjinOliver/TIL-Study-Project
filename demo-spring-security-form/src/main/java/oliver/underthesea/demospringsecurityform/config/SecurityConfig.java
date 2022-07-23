@@ -9,13 +9,21 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
-    http.authorizeRequests()
-        .mvcMatchers("/", "/info", "/account/**").permitAll()
-        .mvcMatchers("/admin").hasRole("ADMIN")
-        .anyRequest().authenticated();
-    http.formLogin();
-    http.httpBasic();
-  }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests() // authorize 인가하
+                .mvcMatchers("/", "/info", "/account/**").permitAll()
+                .mvcMatchers("/admin").hasRole("ADMIN")
+                .anyRequest().authenticated();
+        http.formLogin();
+        http.httpBasic();
+//        http.authorizeRequests()
+//                .mvcMatchers("/", "/info", "/account/**").permitAll()
+//                .mvcMatchers("/admin").hasRole("ADMIN")
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .and()
+//                .httpBasic();
+    }
 }
