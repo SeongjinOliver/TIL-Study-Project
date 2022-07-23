@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AccountService implements UserDetailsService {
+  // UserDetailsService
+  // 쓰이는것은 DAO가지고 유저 정보를 읽어와서 인증하는곳에서 쓰임
 
   private final AccountRepository accountRepository;
   private final PasswordEncoder passwordEncoder;

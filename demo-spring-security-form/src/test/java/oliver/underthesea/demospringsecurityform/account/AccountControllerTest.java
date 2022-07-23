@@ -131,7 +131,7 @@ public class AccountControllerTest {
     String username = "oliver";
     String password = "123";
     Account user = this.createUser(username, password);
-    mockMvc.perform(formLogin().user(username).password(password))
+    mockMvc.perform(formLogin().user(user.getUsername()).password(password))
         .andExpect(authenticated());
   }
 
