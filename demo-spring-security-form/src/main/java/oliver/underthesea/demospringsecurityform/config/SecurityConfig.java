@@ -57,6 +57,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .expressionHandler(expressionHandler());
         http.formLogin();
         http.httpBasic();
+
+        http.logout().logoutSuccessUrl("/");
 //        http.authorizeRequests()
 //                .mvcMatchers("/", "/info", "/account/**").permitAll()
 //                .mvcMatchers("/admin").hasRole("ADMIN")
