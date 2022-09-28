@@ -84,6 +84,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 });
 //                .accessDeniedPage("/access-denied");
 
+//        http.rememberMe()
+//                .userDetailsService(accountService)
+//                .key("remember-me-sample");
+
 //        http.authorizeRequests()
 //                .mvcMatchers("/", "/info", "/account/**").permitAll()
 //                .mvcMatchers("/admin").hasRole("ADMIN")
