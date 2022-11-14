@@ -2,11 +2,11 @@ package com.example.jpashoporder.domain.item;
 
 import com.example.jpashoporder.exception.NotEnoughStockException;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
