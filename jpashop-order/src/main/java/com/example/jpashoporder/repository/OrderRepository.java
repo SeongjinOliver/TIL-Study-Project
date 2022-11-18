@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
@@ -48,8 +49,15 @@ public class OrderRepository {
             jpql += " m.name like :name";
         }
 
-        return em.createQuery(jpql, Order.class)
-                .setMaxResults(1000) //최대 1000건
-                .getResultList();
+        TypedQuery<Order> query = em.createQuery(jpql, Order.class)
+                .setMaxResults(1000);//최대 1000건
+        if (orderSearch.getOrderStatus() != null) {
+            query = query.setParameter("status", orderSearch.getOrderStatus());
+        }
+        if (StringUtils.hasText(orderSearch.getMemberName())) {
+            query = query.setParameter("name", orderSearch.getMemberName());
+        }
+
+        return query.getResultList();
     }
 }
