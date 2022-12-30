@@ -1,64 +1,59 @@
 package jpabook.jpashop.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jpabook.jpashop.domain.item.Item;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+import static javax.persistence.FetchType.*;
 
 @Entity
+@Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
 
-  @Id
-  @GeneratedValue
-  @Column(name = "ORDER_ITEM_ID")
-  private Long id;
+    @Id @GeneratedValue
+    @Column(name = "order_item_id")
+    private Long id;
 
-  @Column(name = "ORDER_ID")
-  private Long orderId;
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "item_id")
+    private Item item;
 
-  @Column(name = "ITEM_ID")
-  private Long itemId;
+    @JsonIgnore
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "order_id")
+    private Order order;
 
-  private int orderPrice;
-  private int count;
+    private int orderPrice; //주문 가격
+    private int count; //주문 수량
 
-  public Long getId() {
-    return id;
-  }
+    //==생성 메서드==//
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setCount(count);
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+        item.removeStock(count);
+        return orderItem;
+    }
 
-  public Long getOrderId() {
-    return orderId;
-  }
+    //==비즈니스 로직==//
+    public void cancel() {
+        getItem().addStock(count);
+    }
 
-  public void setOrderId(Long orderId) {
-    this.orderId = orderId;
-  }
+    //==조회 로직==//
 
-  public Long getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(Long itemId) {
-    this.itemId = itemId;
-  }
-
-  public int getOrderPrice() {
-    return orderPrice;
-  }
-
-  public void setOrderPrice(int orderPrice) {
-    this.orderPrice = orderPrice;
-  }
-
-  public int getCount() {
-    return count;
-  }
-
-  public void setCount(int count) {
-    this.count = count;
-  }
+    /**
+     * 주문상품 전체 가격 조회
+     */
+    public int getTotalPrice() {
+        return getOrderPrice() * getCount();
+    }
 }
